@@ -23,7 +23,7 @@ Il quartile zero, il primo, il secondo, il terzo e il quarto quartile corrispond
 
 I quartili vengono inoltre utilizzati per rappresentare un Box-plot.
 
-![image-20200322190131570](C:\Users\Max\AppData\Roaming\Typora\typora-user-images\image-20200322190131570.png)
+![](C:\Users\Max\Documents\GitHub\Appunti_Python_Machine_Learning\immagini\Seaborn-boxplot.png)
 
 Simili al boxplot ci sono
 
