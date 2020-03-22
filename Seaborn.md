@@ -25,7 +25,7 @@ Il quartile zero, il primo, il secondo, il terzo e il quarto quartile corrispond
 
 I quartili vengono inoltre utilizzati per rappresentare un Box-plot.
 
-![](C:\Users\Max\Documents\GitHub\Appunti_Python_Machine_Learning\immagini\Seaborn-boxplot.png)
+![](immagini\Seaborn-boxplot.png)
 
 Simili al boxplot ci sono
 
