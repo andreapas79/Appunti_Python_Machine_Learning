@@ -1,5 +1,7 @@
 # Seaborn
 
+Seaborn è una libreria per il plotting statistico, basata su matplotlib, rimanendo più "user friendly". Ha stili di default predefiniti molto belli ed è strutturata per lavorare molto bene con i dataframe di pandas.
+
 
 
 ## Boxplot
