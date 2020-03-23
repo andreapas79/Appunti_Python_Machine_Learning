@@ -43,6 +43,41 @@ Simili al boxplot ci sono
 >Catplot
 >Combine a categorical plot with a FacetGrid.
 
+Di seguito un breve grafico di riepilogo dei grafici precendenti:
+
+![](immagini/Seaborn-riepilogo.png)
+
+Questo è invece il codice compatto per la visualizzazione del precedente grafico
+
+```
+plt.figure(figsize=(10,10))
+i=1
+titles=['Boxplot', 'Violinplot', 'Stripplot', 'Swarmplot']
+grafici=(sns.boxplot, sns.violinplot, sns.stripplot,sns.swarmplot)
+
+for fun, title in zip (grafici, titles):
+    plt.subplot(2,2,i)
+    plt.title(title)
+    fun(x='sex',y='tip', data=df)
+    plt.tight_layout()
+    i+=1
+```
+
+Qui si può notare come i titoli sono stati inseriti all'interno di un ciclo for, stessa cosa vale per le funzioni, questo esprime per me la potenza e la versatilità di Python per semplificare il codice e renderlo molto elegante e leggibile.
+
+Di seguito il grafico catplot che si distingue dai precedenti in quanto
+
+<img src="immagini/Seaborn-catplot.png" style="zoom:150%;" />
+
+il codice del grafico:
+
+```
+sns.catplot(x="sex", y="total_bill",
+                hue="smoker", col="time",
+                data=df, kind="boxen",
+                height=4, aspect=.7);
+```
+
 
 
 ```
