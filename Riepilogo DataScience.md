@@ -1,6 +1,6 @@
 # Ciclo di vita di un algoritmo nel Datascience
 
-[Fase 1 - Comprensione del problema](#Comprensione del problema)
+[Fase 1 - Comprensione del problema](##Comprensione del problema)
 
 [Fase 2 - Acquiring data](#Raccolta dei dati (Data mining))
 
@@ -130,10 +130,42 @@ Per comprendere questo punto verranno introdotti i concetti dietro le metriche d
   \frac{ΣTrue Pos} {ΣTrue Pos + ΣFalse Pos}
   $$
   
+Spesso c'è un divario tra i risultati di Recall e Precision, questo perchè mentre il recall esprime l'abilità di trovare TUTTI i casi rilevanti in un dataset, la precisione esprime la proporzione tra i dati che il nostro modello afferma siano rilevanti che in realtà lo erano.
+  
+* **F1-score**:  Il valore F1-score risulta essere una combinazione tra questi due, infatti risulta essere la media armonica tra questi due, racchiudendo i precedenti valori in un'unica formula:
+  $$
+  F_1-score = 2 *(\frac{precision * recall}{precision+recall})
+  $$
+  Viene utilizzata una media armonica al posto di una media semplice per dare meno peso ai valori estremi. Un classificatore con precisione di 1 e recall di 0 avrebbe come media semplice 0.5 ma un valore di F1-score di 0.
 
-* **F1-score**:
+Il risultato di questi valori o più in generale la matrice di confusione e tutti i parametri calcolabili, sono UNICAMENTE dei modi di confrontare i valori predetti con quelli reali. É importante comprendere che <u>quello che costituisce una buona metrica di valutazione dipende dalle situazioni specifiche del problema che si affronta</u>.
 
+Ad esempio è fondamentale capire in che contesto ci si trova: se i valori in un data set sono bilanciati o meno, oppure se è più importante trovare i valori positivi, quindi si può chiudere un'occhio sui falsi positivi, o se viceversa non sono accettabili quindi si cerca di favorire modelli che forniscano un numero più basso di falsi positivi anche a discapito di un aumento di falsi negativi. Ovviamente queste decisioni iniziano ad essere prese durante il primo punto di questo percorso, [la comprensione del problema](#Comprensione del problema) e continuano a essere aggiornati constantemente con gli addetti ai lavori per cui si costruisce il modello.
 
+#### Regression Error Metrics
+
+I modelli che affrontano l'analisi della regressione cercano di predirre valori continui, per valutare i risultati ottenuti non possono essere utilizzate le metriche designate per i problemi di classificazione come l'accuratezza o il recall, visti precendetemente. Alcune delle più comuni metriche che valutano un modello di regressione sono:
+
+* Mean Absolute Error
+* Mean Squared Error
+* Root Mean Squared Error
+
+Analizzandoli in dettaglio:
+
+- Mean Absolute Error (o media degli errori assoluti): è semplicemente la media dei valori assoluti della differenza tra valore calcolato e valore reale. La formula è:
+  $$
+  \frac{1}{n} \sum_{i=1}^{n}\arrowvert y_i - \widehat{y}_i \arrowvert \\
+  
+  y = real\ value\\
+  \widehat{y}=predicted\ value
+  $$
+  questa misura non attua particolari strategie per gestire il peso di valori estremi occasionali.
+
+* Mean Square Error (o errore quadratico medio) che viene calcolato come la media del quadrasto degli errori con la formula. 
+  $$
+  \frac{1}{n} \sum_{i=1}^{n} (y_i-\widehat{y}_i)^2
+  $$
+  Questo permette di dar maggior rilievo a errori di maggior entità rispetto al MAE, rendendo l'MSE più popolare.
 
 ​																																					[Torna su](#Ciclo di vita di un algoritmo nel Datascience)
 
