@@ -37,6 +37,22 @@ Le variabili categoriche (o qualitative) sono variabile che catalogano all'inter
 * **ordinali** (o ordinabile) quando possono essere ordinate in modo crescente o decrescente
 * **nominali** (o sconnesse) quando sono tutte allo stesso livello
 
+### Countplot
+
+Conta gli elementi che possiedono una determinata variabile categorica. La lista delle palette la si può trovare su https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html.
+
+```python
+sns.set_style('whitegrid')
+plt.figure(figsize=(3,6))
+sns.set_context('poster', font_scale=1)
+cola = [ 'cyan', 'pink']
+a = sns.countplot(x='sex', data=df, palette=cola)
+a.set(xlabel='righe', ylabel='colonne')
+sns.despine(left=True, bottom=True)
+```
+
+![](immagini/Countplot.png)
+
 ### Barplot
 
 Il più semplice dei plot che rappresentano dati categorici. Le variabili categoriche vengono raggruppate secondo la funzione passata al parametro estimator, se non viene passato nessun parametro di default è settata sulla media (np.mean)
@@ -290,7 +306,7 @@ Altri parametri che possono essere aggiunti sono:
 
 ​																																					[Torna su](#Seaborn)
 
-### Clustemap
+### Clustermap
 
 I dati verranno raggruppati in famiglie più o meno similari tra essi.
 
@@ -313,12 +329,16 @@ plt.show()
 
 + **PairGrid** fa la stessa cosa ma lascia maggiore libertà nella realizzazione dei singoli grafici:
 
-```python
-g = sns.PairGrid(iris)
-g.map_diag(sns.distplot)
-g.map_upper(sns.kdeplot)
-g.map_lower(sns.scatterplot)
-```
+  ```
+  g = sns.PairGrid(iris)
+  g.map_diag(sns.distplot)
+  g.map_upper(sns.kdeplot)
+  g.map_lower(sns.scatterplot)
+  ```
+
+  
+
+  
 
 + **FacetGrid** permette di scegliere le feature su cui fare il grafico:
 
@@ -340,9 +360,36 @@ g.map(sns.scatterplot,'total_bill', 'tip')
 
 ​																																					[Torna su](#Seaborn)
 
+### Regression plot
 
+Seaborn permette di visualizzare direttamente modelli di regressione lineare direttamente tramite grafico.
 
+```python
+df = sns.load_dataset('tips')
+sns.lmplot(x="total_bill", y="tip" , data=df, height=12, markers=['s','v'], scatter_kws={'s':50})
+```
 
+* dove **height** ha sostituito l'attributo size per definire la grandezza del grafico
 
+* **markers** serve per decidere i simboli che rappresentano le varie tipologie
 
+* **scatter_kws** definisce la grandezza dei punti
+
+![](immagini/lmplot1.png)
+
+É possibile inoltre inserire variabili categoriche (qualitative) per avere una lettura migliore dei dati, si possono selezionare e confrontare sino a 3 variabili categoriche (qualitative) contemporaneamente.
+
+```
+sns.lmplot(x="total_bill", y="tip" , data=df, col='smoker', row='time', hue='sex', aspect=1.5, height=5, scatter_kws={'s':30})
+```
+
+![](immagini/lmplot3.png)
+
+```python
+sns.lmplot(x="total_bill", y="tip" , data=df, col='sex', row='time', hue='smoker', aspect=1.5, height=5, scatter_kws={'s':30})
+```
+
+![](immagini/lmplot2.png)
+
+Da notare come sostituendo l'attributo col con l'attributo hue ci si ha una visione completamente diversa dei dati riuscendo a individuare caratteristiche chiave
 
